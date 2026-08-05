@@ -412,109 +412,78 @@ footer a:hover { color: #fff; }
   --eye-y: 0px;
   position: relative;
   z-index: 2;
-  width: 84%;
-  aspect-ratio: 1.14;
-  border-radius: 49% 49% 27% 27% / 48% 48% 22% 22%;
-  background:
-    radial-gradient(ellipse at 31% 17%, rgba(255,255,255,.15) 0%, rgba(255,255,255,.035) 17%, transparent 31%),
-    radial-gradient(ellipse at 50% 112%, rgba(103, 44, 255, .92) 0%, rgba(69, 22, 207, .54) 29%, transparent 53%),
-    radial-gradient(circle at 72% 48%, rgba(55, 44, 104, .24), transparent 38%),
-    linear-gradient(150deg, #242534 0%, #151522 34%, #0d0c1b 69%, #171039 100%);
-  box-shadow:
-    inset 0 2px 1px rgba(255,255,255,.24),
-    inset 0 -17px 34px rgba(74, 25, 226, .42),
-    inset 15px 6px 35px rgba(255,255,255,.025),
-    0 0 0 2px rgba(238, 231, 255, .82),
-    0 0 14px rgba(246, 241, 255, .78),
-    0 0 38px rgba(185, 158, 255, .34),
-    0 31px 52px rgba(0,0,0,.68),
-    0 36px 100px rgba(84, 42, 255, .42);
+  width: 90%;
+  aspect-ratio: 1075 / 946;
   transform-origin: 50% 82%;
   animation: mascot-breathe 4.6s cubic-bezier(.45,0,.35,1) infinite;
 }
 
-.mascot::before {
-  content: "";
+.mascot-body {
   position: absolute;
-  inset: 2.3%;
-  border-radius: inherit;
-  background:
-    linear-gradient(132deg, rgba(255,255,255,.09), transparent 24%),
-    radial-gradient(ellipse at 52% 2%, rgba(255,255,255,.18), transparent 36%);
-  opacity: .72;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 28px 35px rgba(0,0,0,.6)) drop-shadow(0 26px 44px rgba(80,38,255,.22));
   pointer-events: none;
-}
-
-.mascot::after {
-  content: "";
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: -4%;
-  height: 11%;
-  border-radius: 50%;
-  background: linear-gradient(90deg, transparent, #5320ff 22%, #854bff 50%, #5320ff 78%, transparent);
-  filter: blur(13px);
-  opacity: .96;
 }
 
 .mascot-eye {
   position: absolute;
   z-index: 2;
-  top: 36.5%;
-  width: 14%;
-  height: 25%;
+  top: 34.5%;
+  width: 13.4%;
+  height: 24%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at 45% 36%, #fff 0%, #fff 62%, #eee9ff 100%);
-  box-shadow: inset 0 -3px 5px rgba(174, 154, 230, .16), 0 0 13px rgba(255,255,255,.88), 0 0 29px rgba(219, 205, 255, .34);
+  background: radial-gradient(ellipse at 47% 40%, #fff 0%, #fff 68%, #f2eeff 100%);
+  box-shadow: inset 0 -2px 4px rgba(174,154,230,.12), 0 0 11px rgba(255,255,255,.8), 0 0 24px rgba(219,205,255,.28);
   transform: translate(var(--eye-x), var(--eye-y));
 }
 
 .eye-left {
-  left: 28%;
-  animation: mascot-left-eye 7.6s ease-in-out infinite;
+  left: 28.6%;
+  animation: mascot-eye-blink 7.2s ease-in-out infinite;
 }
 .eye-right {
-  right: 28%;
-  animation: mascot-right-eye 7.6s ease-in-out infinite;
+  right: 28.6%;
+  animation: mascot-eye-blink 7.2s ease-in-out infinite;
 }
 
 .mascot-wink {
   position: absolute;
   z-index: 3;
-  top: 39%;
-  right: 23.3%;
-  width: 24%;
-  height: 19%;
+  top: 38.5%;
+  right: 24.8%;
+  width: 18.5%;
+  height: 17%;
   opacity: 0;
-  animation: mascot-wink 7.6s ease-in-out infinite;
   transform: translate(var(--eye-x), var(--eye-y));
 }
 
 .mascot-wink i {
   position: absolute;
-  left: 6%;
+  left: 5%;
   top: 50%;
-  width: 92%;
-  height: 15%;
+  width: 94%;
+  height: 12%;
   border-radius: 999px;
   background: #fff;
   box-shadow: 0 0 14px rgba(255,255,255,.72);
   transform-origin: 10% 50%;
 }
 
-.mascot-wink i:first-child { transform: rotate(-30deg); }
-.mascot-wink i:last-child { transform: rotate(30deg); }
+.mascot-wink i:first-child { transform: rotate(-28deg); }
+.mascot-wink i:last-child { transform: rotate(28deg); }
 
 .mascot-spark {
   position: absolute;
   z-index: 3;
-  left: -18%;
-  top: 7%;
-  width: 31%;
+  left: -7%;
+  top: 2%;
+  width: 29%;
   height: 31%;
   opacity: 0;
-  animation: mascot-spark 7.6s ease-in-out infinite;
 }
 
 .mascot-spark i {
@@ -533,16 +502,14 @@ footer a:hover { color: #fff; }
 
 .hero-product:hover .eye-right {
   opacity: 0;
-  transform: scale(.65);
-  animation: none;
 }
 
-.hero-product:hover .mascot-wink,
-.hero-product:hover .mascot-spark {
+.hero-product:hover .mascot-wink {
   opacity: 1;
-  transform: scale(1);
-  animation: none;
+  transform: translate(var(--eye-x), var(--eye-y)) scale(1);
 }
+
+.hero-product:hover .mascot-spark { opacity: 1; }
 
 @keyframes mascot-breathe {
   0%, 100% { transform: translate3d(var(--mascot-x), var(--mascot-y), 0) rotate(var(--mascot-tilt)) scale(1, 1); }
@@ -550,25 +517,9 @@ footer a:hover { color: #fff; }
   56% { transform: translate3d(var(--mascot-x), calc(var(--mascot-y) - 10px), 0) rotate(var(--mascot-tilt)) scale(.996, 1.012); }
 }
 
-@keyframes mascot-left-eye {
-  0%, 35%, 38%, 100% { transform: translate(var(--eye-x), var(--eye-y)) scaleY(1); }
-  36.5% { transform: translate(var(--eye-x), var(--eye-y)) scaleY(.08); }
-}
-
-@keyframes mascot-right-eye {
-  0%, 35%, 38%, 71%, 78%, 100% { opacity: 1; transform: translate(var(--eye-x), var(--eye-y)) scaleY(1); }
-  36.5% { opacity: 1; transform: translate(var(--eye-x), var(--eye-y)) scaleY(.08); }
-  73%, 76% { opacity: 0; transform: translate(var(--eye-x), var(--eye-y)) scale(.72); }
-}
-
-@keyframes mascot-wink {
-  0%, 71%, 78%, 100% { opacity: 0; transform: translate(var(--eye-x), var(--eye-y)) scale(.76); }
-  73%, 76% { opacity: 1; transform: translate(var(--eye-x), var(--eye-y)) scale(1); }
-}
-
-@keyframes mascot-spark {
-  0%, 72%, 79%, 100% { opacity: 0; transform: scale(.72); }
-  74%, 77% { opacity: .9; transform: scale(1); }
+@keyframes mascot-eye-blink {
+  0%, 46%, 48%, 100% { transform: translate(var(--eye-x), var(--eye-y)) scaleY(1); }
+  47% { transform: translate(var(--eye-x), var(--eye-y)) scaleY(.08); }
 }
 
 .product-aura {
@@ -580,11 +531,7 @@ footer a:hover { color: #fff; }
 }
 
 .product-orbit {
-  position: absolute;
-  inset: 2%;
-  border: 1px solid rgba(194, 159, 255, .14);
-  border-radius: 50%;
-  transform: rotate(-18deg) scaleY(.64);
+  display: none;
 }
 
 .orbit-two { inset: -10%; transform: rotate(23deg) scaleY(.72); opacity: .55; }
