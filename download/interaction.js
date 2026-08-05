@@ -1,10 +1,18 @@
 (() => {
+  const resetInitialScroll = () => {
+    if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  };
+
+  if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+  resetInitialScroll();
+  window.addEventListener("pageshow", resetInitialScroll);
+  window.addEventListener("load", resetInitialScroll, { once: true });
+
   const hero = document.querySelector(".hero");
   const finePointer = window.matchMedia("(pointer: fine)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   if (hero && finePointer.matches && !reducedMotion.matches) {
-    const spotlightButton = hero.querySelector(".hero-actions .download-target");
     let targetAngle = 0;
     let angle = 0;
     let velocity = 0;
@@ -12,8 +20,6 @@
     let targetSpotY = 57;
     let spotX = 50;
     let spotY = 57;
-    let lastPointer = null;
-    let buttonFocused = false;
 
     const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
@@ -28,50 +34,15 @@
       targetSpotY = clamp((clientY - rect.top) / rect.height * 100, 30, 84);
     };
 
-    const focusDownload = () => {
-      if (!spotlightButton) return;
-      const heroRect = hero.getBoundingClientRect();
-      const buttonRect = spotlightButton.getBoundingClientRect();
-      const buttonX = buttonRect.left + buttonRect.width / 2;
-      const buttonY = buttonRect.top + buttonRect.height / 2;
-      const pivotX = heroRect.left + heroRect.width / 2;
-      const pivotY = heroRect.top + 210;
-      const dx = buttonX - pivotX;
-      const dy = Math.max(180, buttonY - pivotY);
-      const beamAngle = clamp(-Math.atan2(dx, dy) * 180 / Math.PI, -58, 58);
-
-      buttonFocused = true;
-      targetAngle = clamp(beamAngle * 0.2, -12, 12);
-      targetSpotX = clamp((buttonX - heroRect.left) / heroRect.width * 100, 12, 88);
-      targetSpotY = clamp((buttonY - heroRect.top) / heroRect.height * 100, 30, 88);
-      hero.style.setProperty("--beam-angle", `${beamAngle.toFixed(2)}deg`);
-      hero.classList.add("download-focus");
-    };
-
     hero.addEventListener("pointermove", (event) => {
-      lastPointer = { x: event.clientX, y: event.clientY };
-      if (!buttonFocused) pointLampAt(event.clientX, event.clientY);
+      pointLampAt(event.clientX, event.clientY);
     });
 
     hero.addEventListener("pointerleave", () => {
-      buttonFocused = false;
-      hero.classList.remove("download-focus");
       targetAngle = 0;
       targetSpotX = 50;
       targetSpotY = 57;
     });
-
-    if (spotlightButton) {
-      spotlightButton.addEventListener("pointerenter", focusDownload);
-      spotlightButton.addEventListener("focus", focusDownload);
-      const releaseDownload = () => {
-        buttonFocused = false;
-        hero.classList.remove("download-focus");
-        if (lastPointer) pointLampAt(lastPointer.x, lastPointer.y);
-      };
-      spotlightButton.addEventListener("pointerleave", releaseDownload);
-      spotlightButton.addEventListener("blur", releaseDownload);
-    }
 
     const animateLamp = () => {
       velocity += (targetAngle - angle) * 0.045;
