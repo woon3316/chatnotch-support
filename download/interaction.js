@@ -23,7 +23,7 @@
       const pivotY = rect.top + 8;
       const dx = clientX - pivotX;
       const dy = Math.max(210, clientY - pivotY);
-      targetAngle = clamp(Math.atan2(dx, dy) * 180 / Math.PI * 0.56, -14, 14);
+      targetAngle = clamp(-Math.atan2(dx, dy) * 180 / Math.PI * 0.56, -14, 14);
       targetSpotX = clamp((clientX - rect.left) / rect.width * 100, 14, 86);
       targetSpotY = clamp((clientY - rect.top) / rect.height * 100, 30, 84);
     };
@@ -38,7 +38,7 @@
       const pivotY = heroRect.top + 210;
       const dx = buttonX - pivotX;
       const dy = Math.max(180, buttonY - pivotY);
-      const beamAngle = clamp(Math.atan2(dx, dy) * 180 / Math.PI, -58, 58);
+      const beamAngle = clamp(-Math.atan2(dx, dy) * 180 / Math.PI, -58, 58);
 
       buttonFocused = true;
       targetAngle = clamp(beamAngle * 0.2, -12, 12);

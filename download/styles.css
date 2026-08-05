@@ -31,6 +31,7 @@ body {
 a { color: inherit; text-decoration: none; }
 button, a { -webkit-tap-highlight-color: transparent; }
 img, video { display: block; max-width: 100%; }
+img { height: auto; }
 
 .shell {
   width: min(1240px, calc(100% - 56px));
@@ -113,14 +114,18 @@ img, video { display: block; max-width: 100%; }
   transform-origin: 50% 0;
   transform: translateX(-50%) rotate(var(--beam-angle));
   clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
-  background: linear-gradient(180deg, rgba(255, 228, 174, .3), rgba(255, 165, 79, .15) 45%, transparent 95%);
-  filter: blur(11px);
+  background: linear-gradient(180deg, rgba(255, 228, 174, .42), rgba(255, 165, 79, .22) 45%, transparent 95%);
+  filter: blur(8px);
   mix-blend-mode: screen;
   transition: opacity 220ms ease;
 }
 
-.hero.download-focus .download-beam { opacity: .78; }
+.hero.download-focus .download-beam { opacity: .94; }
 .hero.download-focus .pointer-light { filter: brightness(1.24); }
+.hero.download-focus .hero-actions .button-primary {
+  filter: brightness(1.08);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.54), 0 0 34px rgba(255, 214, 153, .42), 0 0 92px rgba(255, 144, 70, .32);
+}
 
 .site-header {
   position: relative;
@@ -143,6 +148,10 @@ img, video { display: block; max-width: 100%; }
 }
 
 .brand img {
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1;
+  object-fit: contain;
   border-radius: 11px;
   box-shadow: 0 7px 26px rgba(90, 60, 255, .3);
 }
@@ -301,7 +310,7 @@ footer a:hover { color: #fff; }
 
 .hero h1 {
   margin: 0 0 16px;
-  font-size: clamp(74px, 8vw, 120px);
+  font-size: clamp(68px, 7vw, 104px);
   line-height: .86;
   font-weight: 760;
   letter-spacing: -.065em;
@@ -312,10 +321,11 @@ footer a:hover { color: #fff; }
 .hero h2 {
   margin: 0;
   max-width: 710px;
-  font-size: clamp(36px, 4.2vw, 62px);
+  font-size: clamp(32px, 3.5vw, 50px);
   line-height: 1.05;
   font-weight: 720;
   letter-spacing: -.055em;
+  white-space: nowrap;
 }
 
 .hero h2 span {
@@ -328,7 +338,7 @@ footer a:hover { color: #fff; }
 .hero-description {
   margin: 28px 0 0;
   color: #aaa49c;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.85;
 }
 
@@ -406,6 +416,9 @@ footer a:hover { color: #fff; }
   position: relative;
   z-index: 2;
   width: 76%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
   border-radius: 29%;
   filter: drop-shadow(0 28px 42px rgba(0,0,0,.62));
   box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 0 50px rgba(99, 61, 255, .38), 0 0 95px rgba(122, 68, 255, .17);
@@ -484,7 +497,7 @@ footer a:hover { color: #fff; }
 .privacy-section h2,
 .download-card h2 {
   margin: 0;
-  font-size: clamp(50px, 7vw, 92px);
+  font-size: clamp(44px, 5.8vw, 76px);
   line-height: .98;
   letter-spacing: -.065em;
 }
@@ -500,7 +513,7 @@ footer a:hover { color: #fff; }
   max-width: 650px;
   margin: 30px auto 0;
   color: #99928a;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.8;
 }
 
@@ -638,7 +651,7 @@ footer a:hover { color: #fff; }
 .compact-card h3,
 .feature-grid h3 {
   margin: 0;
-  font-size: 31px;
+  font-size: 28px;
   letter-spacing: -.045em;
 }
 
@@ -733,7 +746,7 @@ footer a:hover { color: #fff; }
   align-items: end;
 }
 
-.privacy-section h2 { font-size: clamp(48px, 6vw, 82px); }
+.privacy-section h2 { font-size: clamp(44px, 5.4vw, 72px); }
 .privacy-copy { padding-bottom: 8px; }
 .privacy-copy p { margin: 0; color: #a49d94; font-size: 16px; line-height: 1.9; }
 .privacy-copy a { display: inline-flex; gap: 9px; margin-top: 27px; color: #efb06e; font-size: 14px; }
@@ -768,7 +781,7 @@ footer a:hover { color: #fff; }
 
 .download-card > *:not(.download-glow) { position: relative; z-index: 1; }
 .download-icon { width: 112px; margin-bottom: 30px; border-radius: 30px; box-shadow: 0 24px 54px rgba(0,0,0,.55), 0 0 52px rgba(103, 67, 255, .34); }
-.download-card h2 { font-size: clamp(48px, 6.4vw, 82px); }
+.download-card h2 { font-size: clamp(44px, 5.6vw, 72px); }
 .download-card > p:not(.section-label) { margin: 24px 0 0; color: #9f9991; }
 .download-actions { justify-content: center; margin-top: 31px; }
 .button.large { min-height: 56px; padding-inline: 27px; }
@@ -815,15 +828,15 @@ footer { border-top: 1px solid var(--line); background: #050505; }
   .hero-layout { height: auto; min-height: 746px; display: block; padding-top: 218px; padding-bottom: 76px; }
   .hero-copy { text-align: center; }
   .eyebrow, .hero-actions, .system-note { justify-content: center; }
-  .hero h1 { font-size: clamp(64px, 21vw, 90px); }
-  .hero h2 { font-size: clamp(34px, 10vw, 48px); }
-  .hero-description { font-size: 15px; }
+  .hero h1 { font-size: clamp(58px, 18vw, 78px); }
+  .hero h2 { font-size: clamp(25px, 7.1vw, 34px); }
+  .hero-description { font-size: 14px; }
   .hero-description br { display: none; }
   .hero-product { display: none; }
   .mouse-hint { display: none; }
   .button { min-height: 48px; padding-inline: 19px; font-size: 13px; }
   .section-intro { text-align: left; }
-  .section-intro h2, .privacy-section h2, .download-card h2 { font-size: clamp(43px, 13vw, 64px); }
+  .section-intro h2, .privacy-section h2, .download-card h2 { font-size: clamp(38px, 11vw, 56px); }
   .section-intro > p:last-child { margin-left: 0; }
   .video-shell { margin-top: 50px; width: calc(100% - 18px); }
   .mac-frame { padding: 6px; border-radius: 17px; }
