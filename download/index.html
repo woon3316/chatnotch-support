@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070706">
+  <meta name="description" content="ChatNotch 是为 macOS 刘海打造的效率工具，将音乐、天气、日程、提醒、暂存架与剪贴板收进屏幕顶部。">
+  <meta property="og:title" content="ChatNotch｜把灵感放在刘海之上">
+  <meta property="og:description" content="为 Mac 刘海而生的原生效率工具。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://woon3316.github.io/chatnotch-support/download/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>ChatNotch｜把灵感放在刘海之上</title>
+  <link rel="icon" href="chatnotch-logo.png">
+  <link rel="apple-touch-icon" href="chatnotch-logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="interaction.js" defer></script>
+</head>
+<body>
+  <main>
+    <section class="hero" id="top">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="spotlight" aria-hidden="true"></div>
+
+      <header class="site-header shell">
+        <a class="brand" href="#top" aria-label="ChatNotch 首页">
+          <img src="chatnotch-logo.png" alt="" width="38" height="38">
+          <span>ChatNotch</span>
+        </a>
+        <nav aria-label="主导航">
+          <a href="#features">功能</a>
+          <a href="#privacy">隐私</a>
+          <a href="../#support">支持</a>
+        </nav>
+        <a class="header-cta" href="#download">免费下载</a>
+      </header>
+
+      <div class="lamp-zone" aria-hidden="true">
+        <div class="lamp-rig">
+          <div class="lamp-cable"></div>
+          <div class="lamp-neck"></div>
+          <div class="lamp-shade">
+            <div class="lamp-inner"></div>
+            <div class="lamp-bulb"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-content shell">
+        <p class="eyebrow"><span></span> 专为 Mac 刘海而生</p>
+        <h1>把灵感，<br><span>放在刘海之上。</span></h1>
+        <p class="hero-description">ChatNotch 把音乐、天气、日程、提醒、暂存架与剪贴板，
+收进你每天都会看见的屏幕顶部。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#download">下载 macOS 版 <span aria-hidden="true">↓</span></a>
+          <a class="button button-ghost" href="#features">看看它能做什么 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-metrics shell" aria-label="产品特点">
+        <div><strong>0</strong><span>无需账号</span></div>
+        <div><strong>12+</strong><span>顶部能力</span></div>
+        <div><strong>100%</strong><span>macOS 原生体验</span></div>
+      </div>
+      <p class="mouse-hint">移动鼠标，让灯光跟上你</p>
+    </section>
+
+    <section class="notch-story shell section-pad" id="features">
+      <div class="section-heading">
+        <p class="eyebrow"><span></span> 更少打断，更快抵达</p>
+        <h2>重要的事，<br>总在抬眼之间。</h2>
+        <p>不用打开更多窗口。ChatNotch 让高频信息自然停靠在屏幕顶部，等待你的下一次目光。</p>
+      </div>
+
+      <div class="notch-demo" aria-label="ChatNotch 界面预览">
+        <div class="screen-grain"></div>
+        <div class="demo-menubar"><span>ChatNotch</span><span>9:41</span></div>
+        <div class="notch-pill">
+          <div class="album-art"></div>
+          <div class="track-copy"><strong>午夜漫游</strong><span>正在播放 · 03:24</span></div>
+          <div class="wave"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="demo-panel weather-panel">
+          <span>上海</span><strong>26°</strong><small>晴朗 · 体感舒适</small>
+        </div>
+        <div class="demo-panel shelf-panel">
+          <span>暂存架</span><div><i></i><i></i><i></i></div><small>拖入文件，稍后再用</small>
+        </div>
+        <p class="demo-caption">一块屏幕顶部，容纳你一天的节奏。</p>
+      </div>
+    </section>
+
+    <section class="feature-section section-pad">
+      <div class="shell">
+        <p class="section-kicker">WHAT IT DOES · 它能做什么</p>
+        <div class="feature-grid">
+          <article class="feature-card orange">
+            <span class="feature-index">01</span><div class="feature-orbit"><i></i></div>
+            <h3>正在播放</h3><p>把音乐封面、进度与常用控制收进刘海，需要时出现，安静时隐去。</p>
+          </article>
+          <article class="feature-card pink">
+            <span class="feature-index">02</span><div class="feature-orbit"><i></i></div>
+            <h3>天气与日程</h3><p>抬眼看见今天的天气、下一场日程和提醒，不必在窗口之间来回切换。</p>
+          </article>
+          <article class="feature-card violet">
+            <span class="feature-index">03</span><div class="feature-orbit"><i></i></div>
+            <h3>暂存架</h3><p>文件、图片与文字先放在屏幕顶部，拖拽即存，用完即走。</p>
+          </article>
+          <article class="feature-card blue">
+            <span class="feature-index">04</span><div class="feature-orbit"><i></i></div>
+            <h3>剪贴板</h3><p>最近复制的内容随手可取，减少重复寻找与粘贴的摩擦。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy-section section-pad" id="privacy">
+      <div class="shell privacy-grid">
+        <div>
+          <p class="eyebrow"><span></span> 本地优先</p>
+          <h2>效率可以聪明，<br>隐私不必妥协。</h2>
+        </div>
+        <div class="privacy-copy">
+          <p>无需创建账号，不含广告，也不使用营销跟踪。暂存架与剪贴板内容默认保存在你的 Mac 本地。</p>
+          <a href="../#privacy">查看完整隐私政策 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="privacy-seal" aria-hidden="true">
+          <div class="seal-core">✓</div>
+          <span>LOCAL FIRST · PRIVATE BY DESIGN · LOCAL FIRST · PRIVATE BY DESIGN ·</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-section shell section-pad" id="download">
+      <div class="download-card">
+        <div class="download-glow"></div>
+        <img class="download-icon" src="chatnotch-logo.png" alt="ChatNotch 图标" width="126" height="126">
+        <p class="eyebrow centered"><span></span> macOS 版</p>
+        <h2>让刘海，开始替你工作。</h2>
+        <p>ChatNotch 1.0 · 支持 Apple 芯片与 Intel Mac</p>
+        <div class="download-actions">
+          <a class="button button-primary large" href="https://apps.apple.com/cn/search?term=ChatNotch" target="_blank" rel="noreferrer">在 Mac App Store 查看 <span aria-hidden="true">↗</span></a>
+          <a class="button button-ghost large" href="mailto:wflc00@163.com?subject=申请%20ChatNotch%20内测版">申请内测版</a>
+        </div>
+        <small>建议使用 macOS 13 Ventura 或更高版本</small>
+      </div>
+    </section>
+
+    <footer>
+      <div class="shell footer-inner">
+        <a class="brand" href="#top"><img src="chatnotch-logo.png" alt="" width="32" height="32"><span>ChatNotch</span></a>
+        <p>© 2026 AppOS 团队</p>
+        <div><a href="../#privacy">隐私政策</a><a href="../#support">技术支持</a></div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
