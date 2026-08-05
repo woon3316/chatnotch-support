@@ -1,13 +1,4 @@
 (() => {
-  const resetInitialScroll = () => {
-    if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  };
-
-  if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
-  resetInitialScroll();
-  window.addEventListener("pageshow", resetInitialScroll);
-  window.addEventListener("load", resetInitialScroll, { once: true });
-
   const hero = document.querySelector(".hero");
   const finePointer = window.matchMedia("(pointer: fine)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
