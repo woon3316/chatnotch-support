@@ -1,64 +1,114 @@
 (() => {
   const hero = document.querySelector(".hero");
-  if (!hero) return;
-
   const finePointer = window.matchMedia("(pointer: fine)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (!finePointer.matches || reducedMotion.matches) return;
 
-  let targetAngle = 0;
-  let targetShift = 0;
-  let targetSpotX = 50;
-  let targetSpotY = 47;
-  let angle = 0;
-  let angleVelocity = 0;
-  let shift = 0;
-  let shiftVelocity = 0;
-  let spotX = 50;
-  let spotY = 47;
+  if (hero && finePointer.matches && !reducedMotion.matches) {
+    const spotlightButton = hero.querySelector(".hero-actions .download-target");
+    let targetAngle = 0;
+    let angle = 0;
+    let velocity = 0;
+    let targetSpotX = 50;
+    let targetSpotY = 57;
+    let spotX = 50;
+    let spotY = 57;
+    let lastPointer = null;
+    let buttonFocused = false;
 
-  hero.addEventListener("pointermove", (event) => {
-    const rect = hero.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width;
-    const y = (event.clientY - rect.top) / rect.height;
-    const nx = Math.max(-1, Math.min(1, x * 2 - 1));
-    const ny = Math.max(-1, Math.min(1, y * 2 - 1));
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
-    targetAngle = nx * 9;
-    targetShift = nx * 54;
-    targetSpotX = 50 + nx * 25;
-    targetSpotY = 47 + ny * 16;
-  });
+    const pointLampAt = (clientX, clientY) => {
+      const rect = hero.getBoundingClientRect();
+      const pivotX = rect.left + rect.width / 2;
+      const pivotY = rect.top + 8;
+      const dx = clientX - pivotX;
+      const dy = Math.max(210, clientY - pivotY);
+      targetAngle = clamp(Math.atan2(dx, dy) * 180 / Math.PI * 0.56, -14, 14);
+      targetSpotX = clamp((clientX - rect.left) / rect.width * 100, 14, 86);
+      targetSpotY = clamp((clientY - rect.top) / rect.height * 100, 30, 84);
+    };
 
-  hero.addEventListener("pointerleave", () => {
-    targetAngle = 0;
-    targetShift = 0;
-    targetSpotX = 50;
-    targetSpotY = 47;
-  });
+    const focusDownload = () => {
+      if (!spotlightButton) return;
+      const heroRect = hero.getBoundingClientRect();
+      const buttonRect = spotlightButton.getBoundingClientRect();
+      const buttonX = buttonRect.left + buttonRect.width / 2;
+      const buttonY = buttonRect.top + buttonRect.height / 2;
+      const pivotX = heroRect.left + heroRect.width / 2;
+      const pivotY = heroRect.top + 210;
+      const dx = buttonX - pivotX;
+      const dy = Math.max(180, buttonY - pivotY);
+      const beamAngle = clamp(Math.atan2(dx, dy) * 180 / Math.PI, -58, 58);
 
-  hero.addEventListener("pointerdown", () => {
-    angleVelocity += targetAngle > 0 ? 0.75 : -0.75;
-  });
+      buttonFocused = true;
+      targetAngle = clamp(beamAngle * 0.2, -12, 12);
+      targetSpotX = clamp((buttonX - heroRect.left) / heroRect.width * 100, 12, 88);
+      targetSpotY = clamp((buttonY - heroRect.top) / heroRect.height * 100, 30, 88);
+      hero.style.setProperty("--beam-angle", `${beamAngle.toFixed(2)}deg`);
+      hero.classList.add("download-focus");
+    };
 
-  const animate = () => {
-    angleVelocity += (targetAngle - angle) * 0.035;
-    angleVelocity *= 0.88;
-    angle += angleVelocity;
+    hero.addEventListener("pointermove", (event) => {
+      lastPointer = { x: event.clientX, y: event.clientY };
+      if (!buttonFocused) pointLampAt(event.clientX, event.clientY);
+    });
 
-    shiftVelocity += (targetShift - shift) * 0.024;
-    shiftVelocity *= 0.86;
-    shift += shiftVelocity;
+    hero.addEventListener("pointerleave", () => {
+      buttonFocused = false;
+      hero.classList.remove("download-focus");
+      targetAngle = 0;
+      targetSpotX = 50;
+      targetSpotY = 57;
+    });
 
-    spotX += (targetSpotX - spotX) * 0.075;
-    spotY += (targetSpotY - spotY) * 0.075;
+    if (spotlightButton) {
+      spotlightButton.addEventListener("pointerenter", focusDownload);
+      spotlightButton.addEventListener("focus", focusDownload);
+      const releaseDownload = () => {
+        buttonFocused = false;
+        hero.classList.remove("download-focus");
+        if (lastPointer) pointLampAt(lastPointer.x, lastPointer.y);
+      };
+      spotlightButton.addEventListener("pointerleave", releaseDownload);
+      spotlightButton.addEventListener("blur", releaseDownload);
+    }
 
-    hero.style.setProperty("--lamp-angle", `${angle.toFixed(3)}deg`);
-    hero.style.setProperty("--lamp-shift", `${shift.toFixed(2)}px`);
-    hero.style.setProperty("--spot-x", `${spotX.toFixed(2)}%`);
-    hero.style.setProperty("--spot-y", `${spotY.toFixed(2)}%`);
-    window.requestAnimationFrame(animate);
-  };
+    const animateLamp = () => {
+      velocity += (targetAngle - angle) * 0.045;
+      velocity *= 0.87;
+      angle += velocity;
+      spotX += (targetSpotX - spotX) * 0.085;
+      spotY += (targetSpotY - spotY) * 0.085;
 
-  window.requestAnimationFrame(animate);
+      hero.style.setProperty("--lamp-angle", `${angle.toFixed(3)}deg`);
+      hero.style.setProperty("--spot-x", `${spotX.toFixed(2)}%`);
+      hero.style.setProperty("--spot-y", `${spotY.toFixed(2)}%`);
+      window.requestAnimationFrame(animateLamp);
+    };
+
+    window.requestAnimationFrame(animateLamp);
+  }
+
+  const reveals = document.querySelectorAll(".reveal");
+  if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+    reveals.forEach((element) => element.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -7%" });
+    reveals.forEach((element) => revealObserver.observe(element));
+  }
+
+  const video = document.querySelector("#product-video");
+  const replayButton = document.querySelector(".video-replay");
+  if (video && replayButton) {
+    replayButton.addEventListener("click", () => {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    });
+  }
 })();
