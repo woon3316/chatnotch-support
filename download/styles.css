@@ -621,7 +621,7 @@ footer a:hover { color: #fff; }
 }
 
 .video-shell {
-  width: min(920px, calc(100% - 56px));
+  width: min(760px, calc(100% - 56px));
   margin: 64px auto 0;
   position: relative;
   z-index: 1;
