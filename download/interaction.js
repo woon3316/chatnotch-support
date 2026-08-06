@@ -114,4 +114,25 @@
       video.play().catch(() => {});
     });
   }
+
+  const peekVideo = document.querySelector(".peek-video");
+  if (peekVideo) {
+    if (reducedMotion.matches) {
+      peekVideo.pause();
+      peekVideo.currentTime = 0;
+    } else if ("IntersectionObserver" in window) {
+      const peekObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            peekVideo.play().catch(() => {});
+          } else {
+            peekVideo.pause();
+          }
+        });
+      }, { threshold: 0.2 });
+      peekObserver.observe(peekVideo);
+    } else {
+      peekVideo.play().catch(() => {});
+    }
+  }
 })();
