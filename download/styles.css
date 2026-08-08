@@ -296,11 +296,10 @@ footer a:hover { color: #fff; }
   line-height: .86;
   font-weight: 760;
   letter-spacing: -.065em;
-  color: transparent;
-  background: var(--headline-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  filter: drop-shadow(0 8px 34px rgba(128, 80, 255, .16));
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+  background: none;
+  filter: drop-shadow(0 8px 34px rgba(255, 239, 214, .08));
 }
 
 .hero h2 {
@@ -311,21 +310,24 @@ footer a:hover { color: #fff; }
   font-weight: 720;
   letter-spacing: -.055em;
   white-space: nowrap;
-  color: transparent;
-  background: var(--headline-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+  background: none;
 }
 
 .hero h2 strong {
-  color: inherit;
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
   background: none;
   font: inherit;
 }
 
 .hero h2 span {
-  color: inherit;
-  background: none;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(100deg, #ffb34f 0%, #ff7b4c 46%, #e85fa0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .hero-description {
