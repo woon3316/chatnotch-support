@@ -13,45 +13,30 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>ChatNotch｜小小刘海，大有可为</title>
   <link rel="canonical" href="https://woon3316.github.io/chatnotch-support/download-v2/">
-  <link rel="icon" href="chatnotch-logo.png?v=20260808-6">
-  <link rel="apple-touch-icon" href="chatnotch-logo.png?v=20260808-6">
+  <link rel="icon" href="chatnotch-logo.png?v=20260808-7">
+  <link rel="apple-touch-icon" href="chatnotch-logo.png?v=20260808-7">
   <link rel="preload" href="overview.jpg" as="image">
-  <link rel="stylesheet" href="styles.css?v=20260808-6">
+  <link rel="stylesheet" href="styles.css?v=20260808-7">
   <script>
     (() => {
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-
       document.documentElement.classList.add("is-booting");
-      if (location.hash) {
-        history.replaceState(null, "", location.pathname + location.search);
-      }
-
+      if (location.hash) history.replaceState(null, "", location.pathname + location.search);
       const forceTop = () => {
         document.documentElement.scrollTop = 0;
         if (document.body) document.body.scrollTop = 0;
         window.scrollTo(0, 0);
       };
-
       forceTop();
-      document.addEventListener("DOMContentLoaded", () => {
-        forceTop();
-        requestAnimationFrame(forceTop);
-      }, { once: true });
-      window.addEventListener("pageshow", () => {
-        forceTop();
-        requestAnimationFrame(forceTop);
-      });
+      document.addEventListener("DOMContentLoaded", () => requestAnimationFrame(forceTop), { once: true });
+      window.addEventListener("pageshow", () => requestAnimationFrame(forceTop));
       window.addEventListener("load", () => {
-        forceTop();
         requestAnimationFrame(() => requestAnimationFrame(forceTop));
-        window.setTimeout(() => {
-          forceTop();
-          document.documentElement.classList.remove("is-booting");
-        }, 500);
+        window.setTimeout(() => document.documentElement.classList.remove("is-booting"), 360);
       }, { once: true });
     })();
   </script>
-  <script src="interaction.js?v=20260808-6" defer></script>
+  <script src="interaction.js?v=20260808-7" defer></script>
 </head>
 <body>
   <main>
@@ -63,7 +48,7 @@
 
       <header class="site-header shell">
         <a class="brand" href="#top" aria-label="ChatNotch 首页">
-          <img src="chatnotch-logo.png?v=20260808-6" alt="" width="40" height="40">
+          <img src="chatnotch-logo.png?v=20260808-7" alt="" width="40" height="40">
           <span>ChatNotch</span>
         </a>
         <nav aria-label="主导航">
@@ -103,12 +88,16 @@
           <div class="product-orbit orbit-one"></div>
           <div class="product-orbit orbit-two"></div>
           <div class="mascot" aria-hidden="true">
-            <img class="mascot-body" src="peek-character.png?v=20260808-6" alt="">
+            <img class="mascot-body" src="mascot-body-cutout-v2.png?v=20260808-7" alt="">
+            <span class="mascot-eyes">
+              <i class="mascot-eye mascot-eye-left"></i>
+              <i class="mascot-eye mascot-eye-right"></i>
+            </span>
           </div>
         </div>
       </div>
 
-      <p class="mouse-hint"><span></span> 移动鼠标，让灯跟上你</p>
+      <p class="mouse-hint"><span></span> 移动鼠标，让灯和小刘海跟上你</p>
     </section>
 
     <section class="experience section-pad" id="experience">
@@ -141,252 +130,113 @@
       </div>
     </section>
 
-    <section class="live-demo section-pad" id="live-demo">
-      <div class="shell section-intro compact reveal">
-        <p class="section-label">CHATNOTCH APPEARANCE · 外观预览</p>
-        <h2><span class="title-lead">熟悉的刘海形态，</span><br><span class="title-accent">原样呈现在网页里。</span></h2>
-        <p>按 ChatNotch 1.0.0 的三段尺寸、圆角、模块顺序和内容比例制作。悬停或点击仅用于查看外观变化，不连接系统功能。</p>
+    <section class="pulse-preview section-pad" id="gallery">
+      <div class="shell pulse-intro reveal">
+        <p class="section-label">CHATNOTCH ON YOUR DESKTOP · 桌面外观预览</p>
+        <h2><span class="title-lead">在网页里，</span><br><span class="title-accent">先遇见原版 ChatNotch。</span></h2>
+        <p>以 ChatNotch 1.0.0 的真实 Mac 截图为界面本体，只用网页交互切换展示，不重画、不改变原版 UI。</p>
       </div>
 
-      <div class="live-demo-shell shell reveal" data-live-demo>
-        <div class="live-demo-signals" aria-label="体验说明">
-          <span><i class="signal-green"></i> 仅作外观展示</span>
-          <span><i class="signal-blue"></i> ChatNotch 1.0 原版截图</span>
-          <span><i class="signal-violet"></i> 200 × 36 · 408 × 88 · 658 × 180</span>
-        </div>
+      <div class="pulse-signal-row shell reveal" aria-label="产品特性">
+        <span><i class="signal-green"></i> macOS 13+</span>
+        <span><i class="signal-blue"></i> 原生 macOS 外观</span>
+        <span><i class="signal-violet"></i> 本地优先，无订阅</span>
+      </div>
 
-        <div class="live-mac" data-live-mac>
-          <figure class="exact-screenshot-showcase">
-            <img data-visual-preview src="overview.jpg" alt="ChatNotch 原版主页界面">
-          </figure>
-          <div class="live-menu-bar" aria-hidden="true">
-            <div class="live-menu-left"><b>●</b><strong>访达</strong><span>文件</span><span>编辑</span><span>显示</span><span>前往</span><span>窗口</span><span>帮助</span></div>
-            <div class="live-menu-right"><span>⌁</span><span>▰</span><span>⌕</span><strong>周六 15:44</strong></div>
-          </div>
+      <div class="pulse-stage shell reveal" data-pulse-stage>
+        <div class="pulse-screen" data-pulse-tilt>
+          <img data-pulse-preview src="overview.jpg" alt="ChatNotch 原版主页界面">
+          <div class="pulse-screen-shine" aria-hidden="true"></div>
 
-          <div class="live-desktop">
-            <div class="live-island" data-live-island data-state="compact" data-module="home" aria-live="polite" tabindex="0">
-              <button class="live-compact" type="button" data-live-toggle aria-label="展开 ChatNotch">
-                <span class="live-compact-art" aria-hidden="true"></span>
-                <span class="live-compact-lyric" data-live-compact-lyric>驶过暮色苍白</span>
-                <span class="live-compact-eq" aria-hidden="true" data-live-compact-eq><i></i><i></i><i></i><i></i></span>
-              </button>
-
-              <button class="live-peek" type="button" data-live-toggle aria-label="完整展开 ChatNotch">
-                <span class="live-peek-album" aria-hidden="true"><i></i></span>
-                <span class="live-peek-copy"><strong>理想三旬</strong><small data-live-peek-lyric>雨后有车驶来</small><i><b data-live-peek-progress></b></i></span>
-                <span class="live-peek-play" aria-hidden="true" data-live-peek-play>Ⅱ</span>
-              </button>
-
-              <div class="live-expanded">
-                <div class="live-shoulder-bar">
-                  <div class="live-module-tabs" role="tablist" aria-label="ChatNotch 功能模块">
-                    <button class="is-active" type="button" data-live-module="home" role="tab" aria-selected="true" aria-label="主页" title="主页"><span class="live-icon live-icon-home"></span></button>
-                    <button type="button" data-live-module="shelf" role="tab" aria-selected="false" aria-label="暂存架" title="暂存架"><span class="live-icon live-icon-shelf"></span></button>
-                    <button type="button" data-live-module="calendar" role="tab" aria-selected="false" aria-label="日历" title="日历"><span class="live-icon live-icon-calendar"></span></button>
-                    <button type="button" data-live-module="weather" role="tab" aria-selected="false" aria-label="天气" title="天气"><span class="live-icon live-icon-weather"></span></button>
-                  </div>
-                  <div class="live-notch-gap" aria-hidden="true"><i></i></div>
-                  <div class="live-system-tabs">
-                    <button type="button" data-live-pin aria-pressed="false" aria-label="固定灵动岛" title="固定灵动岛"><span class="live-icon live-icon-pin"></span></button>
-                    <button type="button" data-live-module="battery" aria-label="电池" title="电池"><span class="live-battery-glyph"><i></i></span></button>
-                    <button type="button" data-live-settings aria-label="设置" title="设置"><span class="live-icon live-icon-settings"></span></button>
-                  </div>
-                </div>
-
-                <div class="live-panel live-home-panel is-active" data-live-panel="home" role="tabpanel">
-                  <section class="live-now-playing">
-                    <div class="live-media-head">
-                      <div><strong>理想三旬</strong><small data-live-lyric>雨后有车驶来</small></div>
-                    </div>
-                    <div class="live-media-body">
-                      <div class="live-album" aria-label="专辑封面"><i></i></div>
-                      <div class="live-transport" aria-label="播放控制">
-                        <button type="button" data-live-prev aria-label="上一首">◀</button>
-                        <button type="button" data-live-play aria-label="暂停">Ⅱ</button>
-                        <button type="button" data-live-next aria-label="下一首">▶</button>
-                      </div>
-                    </div>
-                    <div class="live-progress"><i data-live-progress></i></div>
-                    <div class="live-time"><span data-live-elapsed>0:05</span><span>3:30</span></div>
-                  </section>
-
-                  <i class="live-divider" aria-hidden="true"></i>
-
-                  <section class="live-home-calendar">
-                    <div class="live-date-strip">
-                      <div class="live-month"><strong>8月</strong><small>2026年</small></div>
-                      <div class="live-days" role="listbox" aria-label="选择日期">
-                        <button type="button"><small>一</small><b>3</b></button>
-                        <button type="button"><small>二</small><b>4</b></button>
-                        <button class="is-selected" type="button"><small>三</small><b>5</b><i></i></button>
-                        <button type="button"><small>四</small><b>6</b></button>
-                        <button type="button"><small>五</small><b>7</b></button>
-                      </div>
-                    </div>
-                    <div class="live-reminder-head"><strong>提醒事项 ↗</strong><small data-live-reminder-count>4 项</small></div>
-                    <div class="live-reminders">
-                      <button type="button" data-live-reminder><i></i><span>🐟 摸鱼提醒</span><small>10:00</small></button>
-                      <button type="button" data-live-reminder><i></i><span>🎵 放下耳机</span><small>11:00</small></button>
-                      <button type="button" data-live-reminder><i></i><span>🍚 干饭干饭</span><small>12:00</small></button>
-                      <button type="button" data-live-reminder><i></i><span>📖 阅读十分钟</span><small>18:00</small></button>
-                    </div>
-                  </section>
-
-                  <i class="live-divider" aria-hidden="true"></i>
-
-                  <section class="live-home-weather">
-                    <div class="live-weather-top"><span>☁</span><div><strong>31°</strong><small>多云</small></div></div>
-                    <b>舟山市</b>
-                    <div class="live-weather-range"><span><i>↑</i> 最高<strong>32°</strong></span><span><i>↓</i> 最低<strong>28°</strong></span></div>
-                    <div class="live-weather-stats"><span>体感<b>34°</b></span><span>湿度<b>67%</b></span></div>
-                  </section>
-                </div>
-
-                <div class="live-panel live-volume-panel" data-live-panel="volume" role="tabpanel" hidden>
-                  <div class="live-volume-primary"><span class="live-speaker">◖</span><div><p><strong>系统音量</strong><b data-live-volume-label>68%</b></p><input data-live-volume type="range" min="0" max="100" value="68" aria-label="系统音量"><small>MacBook Pro 扬声器</small></div></div>
-                  <i></i>
-                  <div class="live-app-volume"><strong>媒体应用</strong><div><span class="live-app-icon live-app-music">♪</span><b>音乐</b><small>正在播放</small><input type="range" min="0" max="100" value="82" aria-label="音乐音量"></div><div><span class="live-app-icon live-app-browser">◉</span><b>Google Chrome</b><small>暂停</small><input type="range" min="0" max="100" value="54" aria-label="浏览器音量"></div></div>
-                </div>
-
-                <div class="live-panel live-shelf-panel" data-live-panel="shelf" role="tabpanel" hidden>
-                  <button class="live-drop-pane live-airdrop" type="button"><span>◎</span><strong>隔空投送</strong><small>拖放以共享</small></button>
-                  <div class="live-drop-pane live-tray" data-live-dropzone tabindex="0" role="button" aria-label="将文件拖到暂存架">
-                    <span>⇩</span><strong>将文件拖到这里</strong><small>暂存文件，方便随时调取</small>
-                    <div class="live-file-list" data-live-file-list></div>
-                  </div>
-                  <div class="live-clipboard">
-                    <div><strong>▣ 剪贴板 <span data-live-clip-count>3/9</span></strong><button type="button" data-live-clear>清空</button></div>
-                    <div class="live-clip-items" data-live-clip-items><button type="button"><i>文</i><span>发布说明.txt</span></button><button type="button"><i>链</i><span>chatnotch.app</span></button><button type="button"><i>图</i><span>灵感截图.png</span></button></div>
-                  </div>
-                </div>
-
-                <div class="live-panel live-calendar-panel" data-live-panel="calendar" role="tabpanel" hidden>
-                  <section class="live-month-grid"><header><button type="button" data-live-month-prev>‹</button><strong data-live-month-title>八月 2026</strong><button type="button" data-live-month-next>›</button></header><div class="live-weekdays"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="live-grid-days" data-live-grid-days></div></section>
-                  <i class="live-divider" aria-hidden="true"></i>
-                  <section class="live-events"><header><strong>今天</strong><small>1 event</small><button type="button">＋</button></header><article><i></i><div><strong>开周例会</strong><small>4:00 下午 – 6:00 下午</small></div><button type="button">◉</button></article></section>
-                  <i class="live-divider" aria-hidden="true"></i>
-                  <section class="live-todo"><header><strong>提醒事项 ↗</strong><small>4 项</small></header><div class="live-reminders"><button type="button" data-live-reminder><i></i><span>🐟 摸鱼提醒</span><small>今天 10:00</small></button><button type="button" data-live-reminder><i></i><span>🎵 放下耳机</span><small>今天 11:00</small></button><button type="button" data-live-reminder><i></i><span>🍚 干饭干饭</span><small>今天 12:00</small></button></div></section>
-                </div>
-
-                <div class="live-panel live-weather-panel" data-live-panel="weather" role="tabpanel" hidden>
-                  <div class="live-weather-summary"><span>☁</span><div><strong>31°C</strong><small>多云</small><b>舟山市</b></div></div>
-                  <div class="live-weather-chart" aria-label="逐小时温度趋势"><i></i><span style="--x:2%;--y:56%">现在<b>31°</b></span><span style="--x:21%;--y:43%">16时<b>32°</b></span><span style="--x:40%;--y:31%">17时<b>33°</b></span><span style="--x:59%;--y:38%">18时<b>32°</b></span><span style="--x:78%;--y:54%">19时<b>30°</b></span><span style="--x:97%;--y:67%">20时<b>29°</b></span></div>
-                  <div class="live-temp-extremes"><span>高 <b>32°C</b></span><span>低 <b>28°C</b></span></div>
-                  <div class="live-weather-details"><span>体感温度<b>34°C</b></span><span>湿度<b>67%</b></span><span>空气质量<b>42 优</b></span><span>风速<b>7 英里/时</b></span><span>紫外线<b>3 中等</b></span></div>
-                </div>
-
-                <div class="live-panel live-battery-panel" data-live-panel="battery" role="tabpanel" hidden>
-                  <div class="live-battery-title"><span>▰</span><strong>95%</strong><small>使用电池供电<br>剩余约 8 小时 26 分钟</small></div><div class="live-battery-bar"><i></i></div><strong>电池趋势</strong><div class="live-battery-chart"><i></i></div>
-                </div>
-
-                <div class="live-settings-popover" data-live-settings-popover hidden><strong>外观</strong><span>动画级别 <b>完整</b></span><span>温度单位 <b>摄氏度</b></span><span>主页布局 <b>音乐 · 日历 · 天气</b></span></div>
-              </div>
+          <aside class="pulse-controller" aria-label="切换 ChatNotch 外观">
+            <div class="pulse-controller-head">
+              <span><i></i><i></i><i></i></span>
+              <b>CHATNOTCH</b>
             </div>
+            <p>选择一个模块</p>
+            <div class="pulse-module-grid">
+              <button class="is-active" type="button" data-pulse-src="overview.jpg" data-pulse-label="主页总览" data-pulse-alt="ChatNotch 原版主页界面"><i class="pulse-glyph pulse-home"></i><span>主页</span></button>
+              <button type="button" data-pulse-src="lyrics.jpg" data-pulse-label="音乐与歌词" data-pulse-alt="ChatNotch 原版音乐歌词界面"><i class="pulse-glyph pulse-music"></i><span>音乐</span></button>
+              <button type="button" data-pulse-src="compact.jpg" data-pulse-label="紧凑播放" data-pulse-alt="ChatNotch 原版紧凑播放界面"><i class="pulse-glyph pulse-compact"></i><span>紧凑</span></button>
+              <button type="button" data-pulse-src="calendar.jpg" data-pulse-label="日历与提醒" data-pulse-alt="ChatNotch 原版日历提醒界面"><i class="pulse-glyph pulse-calendar"></i><span>日历</span></button>
+              <button type="button" data-pulse-src="weather.jpg" data-pulse-label="天气详情" data-pulse-alt="ChatNotch 原版天气界面"><i class="pulse-glyph pulse-weather"></i><span>天气</span></button>
+              <button type="button" data-pulse-src="shelf.jpg" data-pulse-label="暂存架与剪贴板" data-pulse-alt="ChatNotch 原版暂存架界面"><i class="pulse-glyph pulse-shelf"></i><span>暂存架</span></button>
+            </div>
+            <div class="pulse-controller-status"><i></i><span data-pulse-label>主页总览</span><b>原版截图</b></div>
+          </aside>
 
-            <button class="live-interact-cue" type="button" data-live-state="expanded"><span>悬停查看展开外观，点击查看完整外观</span><small>APPEARANCE PREVIEW</small></button>
-
-            <div class="live-dock" aria-hidden="true"><i>☺</i><i>▦</i><i>♪</i><i>✎</i><i>☁</i><i>⚙</i></div>
-          </div>
+          <div class="pulse-interact-cue" aria-hidden="true"><i></i><span>点击左侧图标切换外观</span></div>
         </div>
-
-        <nav class="live-demo-guide exact-preview-nav" aria-label="切换 ChatNotch 原版界面">
-          <button class="is-active" type="button" data-visual-src="overview.jpg" data-visual-alt="ChatNotch 原版主页界面">主页</button>
-          <button type="button" data-visual-src="lyrics.jpg" data-visual-alt="ChatNotch 原版音乐歌词界面">音乐歌词</button>
-          <button type="button" data-visual-src="compact.jpg" data-visual-alt="ChatNotch 原版紧凑播放界面">紧凑播放</button>
-          <button type="button" data-visual-src="calendar.jpg" data-visual-alt="ChatNotch 原版日历提醒界面">日历提醒</button>
-          <button type="button" data-visual-src="weather.jpg" data-visual-alt="ChatNotch 原版天气界面">天气</button>
-          <button type="button" data-visual-src="shelf.jpg" data-visual-alt="ChatNotch 原版暂存架界面">暂存架</button>
-        </nav>
+        <div class="pulse-meta-strip">
+          <span>真实 ChatNotch 1.0 截图</span>
+          <span>模块状态快速切换</span>
+          <span>与 Mac 桌面同尺寸比例</span>
+        </div>
       </div>
     </section>
 
-    <section class="gallery-section section-pad" id="gallery">
-      <div class="shell section-intro compact reveal">
+    <section class="pulse-details section-pad" id="features">
+      <div class="shell pulse-intro compact reveal">
         <p class="section-label">ONE NOTCH, EVERYDAY TOOLS · 一个刘海，装下日常</p>
-        <h2>不用打开更多窗口。</h2>
-        <p>把高频能力放进统一、安静、随叫随到的顶部空间。</p>
+        <h2><span class="title-lead">熟悉的 Mac，</span><br><span class="title-accent">多一个顺手的入口。</span></h2>
+        <p>把最常查看的内容收进屏幕顶部。每一张界面都来自 ChatNotch 原版，而不是网页重绘。</p>
       </div>
 
-      <div class="story-stack shell">
-        <article class="story-card story-warm reveal">
-          <div class="story-copy">
+      <div class="pulse-detail-stack shell">
+        <article class="pulse-detail-card pulse-detail-music reveal">
+          <div class="pulse-detail-copy">
             <span class="index">01</span>
-            <p class="story-kicker">YOUR DAY, AT A GLANCE</p>
-            <h3><span class="title-lead">今天，</span><br><span class="title-accent">从这里开始</span></h3>
-            <p>音乐、月历、提醒、天气与设备状态集中在同一视线内，一次抬眼就能掌握。</p>
-            <ul><li>多模块自由切换</li><li>实时天气与日程</li><li>设备状态一目了然</li></ul>
+            <p class="story-kicker">MUSIC, ALWAYS IN REACH</p>
+            <h3><span>音乐与歌词，</span><strong>一直在场。</strong></h3>
+            <p>专辑封面、播放控制与歌词靠近刘海停放，保持当前工作节奏，不必频繁切换窗口。</p>
           </div>
-          <figure class="story-screen story-screen-right">
-            <span class="story-screen-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <img src="overview.jpg" alt="ChatNotch 音乐、日历、天气与提醒综合面板" loading="lazy">
-          </figure>
+          <figure><img src="lyrics.jpg" alt="ChatNotch 原版音乐歌词界面" loading="lazy"></figure>
         </article>
 
-        <article class="story-card story-green story-reverse reveal">
-          <div class="story-copy">
+        <article class="pulse-detail-card pulse-detail-calendar reveal">
+          <div class="pulse-detail-copy">
             <span class="index">02</span>
-            <p class="story-kicker">MUSIC THAT STAYS WITH YOU</p>
-            <h3><span class="title-lead">音乐与歌词，</span><br><span class="title-accent">同步流动</span></h3>
-            <p>专辑封面、播放控制与歌词都停靠在刘海下方，不离开当前应用也能掌握节奏。</p>
-            <ul><li>歌词与播放进度同步</li><li>常用控制触手可及</li><li>不遮挡当前工作窗口</li></ul>
+            <p class="story-kicker">THE DAY, AT A GLANCE</p>
+            <h3><span>日程与天气，</span><strong>抬眼即知。</strong></h3>
+            <p>月历、提醒与天气在同一条视线里展开。下一件事和此刻的环境，都更容易被看见。</p>
           </div>
-          <figure class="story-screen story-screen-left">
-            <span class="story-screen-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <img src="lyrics.jpg" alt="ChatNotch 音乐播放与歌词面板" loading="lazy">
-          </figure>
+          <figure class="pulse-dual-shot"><img src="calendar.jpg" alt="ChatNotch 原版日历界面" loading="lazy"><img src="weather.jpg" alt="ChatNotch 原版天气界面" loading="lazy"></figure>
         </article>
 
-        <article class="story-card story-blue reveal">
-          <div class="story-copy">
+        <article class="pulse-detail-card pulse-detail-shelf reveal">
+          <div class="pulse-detail-copy">
             <span class="index">03</span>
-            <p class="story-kicker">DROP IT. FIND IT. DONE.</p>
-            <h3><span class="title-lead">文件暂存，</span><br><span class="title-accent">随手放下</span></h3>
-            <p>隔空投送、文件暂存与剪贴板历史合在一处，拖入、取回都更快。</p>
-            <ul><li>文件与图片拖入即存</li><li>剪贴板历史集中管理</li><li>跨应用取回更顺手</li></ul>
+            <p class="story-kicker">DROP. KEEP. PICK UP.</p>
+            <h3><span>暂存与剪贴板，</span><strong>就在手边。</strong></h3>
+            <p>隔空投送、文件暂存与剪贴板历史在同一处出现，拖入和取回都不离开当前桌面。</p>
           </div>
-          <figure class="story-screen story-screen-right">
-            <span class="story-screen-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <img src="shelf.jpg" alt="ChatNotch 隔空投送、文件暂存与剪贴板面板" loading="lazy">
-          </figure>
-        </article>
-
-        <article class="story-card story-violet story-reverse reveal">
-          <div class="story-copy">
-            <span class="index">04</span>
-            <p class="story-kicker">WHAT'S NEXT, RIGHT ON TIME</p>
-            <h3><span class="title-lead">下一件事，</span><br><span class="title-accent">不再错过</span></h3>
-            <p>日历与提醒事项并排呈现，今天的安排、时间和待办都在屏幕正上方。</p>
-            <ul><li>月历与日程联动</li><li>提醒事项快速完成</li><li>当天信息自动聚合</li></ul>
-          </div>
-          <figure class="story-screen story-screen-left">
-            <span class="story-screen-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <img src="calendar.jpg" alt="ChatNotch 日历与提醒事项面板" loading="lazy">
-          </figure>
+          <figure><img src="shelf.jpg" alt="ChatNotch 原版暂存架界面" loading="lazy"></figure>
         </article>
       </div>
     </section>
 
-    <section class="privacy-section section-pad" id="privacy">
-      <div class="shell privacy-grid reveal">
-        <div>
-          <p class="eyebrow"><span></span> LOCAL FIRST · 本地优先</p>
-          <h2><span class="title-lead">效率可以聪明，</span><br><span class="title-accent">隐私不必妥协。</span></h2>
-        </div>
-        <div class="privacy-copy">
-          <p>无需创建账号，不含广告，也不使用营销跟踪。暂存架与剪贴板内容默认保存在你的 Mac 本地。</p>
+    <section class="pulse-values section-pad" id="privacy">
+      <div class="shell pulse-values-card reveal">
+        <div class="pulse-values-copy">
+          <p class="section-label">NATIVE BY DESIGN · 为 Mac 而生</p>
+          <h2><span class="title-lead">看起来融入系统，</span><br><span class="title-accent">用起来也一样。</span></h2>
+          <p>ChatNotch 采用原生界面语言，核心数据默认留在本机。无需为了效率牺牲安静、速度与隐私。</p>
           <a href="../#privacy">查看完整隐私政策 <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="privacy-seal" aria-hidden="true"><span>✓</span></div>
+        <div class="pulse-value-list">
+          <article><b>01</b><span>SwiftUI 原生体验</span><small>跟随系统视觉与交互习惯</small></article>
+          <article><b>02</b><span>本地优先</span><small>暂存与剪贴板默认保留在 Mac</small></article>
+          <article><b>03</b><span>一次抬眼</span><small>高频信息集中在顶部空间</small></article>
+        </div>
       </div>
     </section>
 
     <section class="download-section shell section-pad" id="download">
       <div class="download-card reveal">
         <div class="download-glow"></div>
-        <img class="download-icon" src="chatnotch-logo.png?v=20260808-6" alt="ChatNotch 图标" width="128" height="128">
+        <img class="download-icon" src="chatnotch-logo.png?v=20260808-7" alt="ChatNotch 图标" width="128" height="128">
         <p class="section-label">DOWNLOAD FOR MAC · 下载</p>
-        <h2><span class="title-lead">让刘海，</span><br><span class="title-accent">开始替你工作。</span></h2>
+        <h2><span class="title-lead">一抬眼，</span><br><span class="title-accent">刚好都在。</span></h2>
         <p>ChatNotch 1.0 · 支持 Apple 芯片与 Intel Mac</p>
         <div class="download-actions">
           <a class="button button-primary large download-target" href="https://apps.apple.com/cn/search?term=ChatNotch" target="_blank" rel="noreferrer">在 Mac App Store 查看 <span aria-hidden="true">↗</span></a>
@@ -398,7 +248,7 @@
 
     <footer>
       <div class="shell footer-inner">
-        <a class="brand" href="#top"><img src="chatnotch-logo.png?v=20260808-6" alt="" width="34" height="34"><span>ChatNotch</span></a>
+        <a class="brand" href="#top"><img src="chatnotch-logo.png?v=20260808-7" alt="" width="34" height="34"><span>ChatNotch</span></a>
         <p>© 2026 AppOS 团队</p>
         <div><a href="../#privacy">隐私政策</a><a href="../#support">技术支持</a></div>
       </div>
